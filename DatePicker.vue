@@ -247,7 +247,17 @@ export default {
         date,
         days: this.initDays(date)
       })
-    }
+      }
+      //loadLength özelliği eksikti tamamladım.
+      for (let i = 0; i < this.loadLength; i++) {
+          const d = this.initDisplay
+          d.setDate(1)
+          const date = new Date(d.clone().setMonth(d.getMonth() + i))
+          this.renderDate.push({
+              date,
+              days: this.initDays(date)
+          })
+      }
     // 监听滚动
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(async entry => {
