@@ -4,7 +4,7 @@ export default {
   props: {
     weekTexts: {
       type: Array,
-      default: () => ['一', '二', '三', '四', '五', '六', '日']
+      default: () => ['1', '2', '3', '4', '5', '6', 'Gün']
     },
     // 初始日期
     initDate: {
@@ -20,19 +20,19 @@ export default {
     },
     startText: {
       type: String,
-      default: '入住'
+      default: 'Giriş'
     },
     endText: {
       type: String,
-      default: '离店'
+      default: 'Çıkış Yap'
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: 'İptal Et'
     },
     confirmText: {
       type: String,
-      default: '确认'
+      default: 'Onayla'
     },
     single: {
       type: Boolean,
@@ -249,7 +249,7 @@ export default {
       })
       }
       //loadLength özelliği eksikti tamamladım.
-      for (let i = 0; i < this.loadLength; i++) {
+      for (let i = this.initLength + 1; i < this.loadLength; i++) {
           const d = this.initDisplay
           d.setDate(1)
           const date = new Date(d.clone().setMonth(d.getMonth() + i))
@@ -512,7 +512,8 @@ export default {
                         ],
                         style: { color: customDay.color }
                       },
-                      Date.equalsDay(today, Date.today()) ? '今天' : index + 1
+                      // Date.equalsDay(today, Date.today()) ? 'Bugün' : index + 1
+                        index + 1
                     ),
                     ...texts.map(t =>
                       h('p', { style: { color: t.color } }, t.text || t)
