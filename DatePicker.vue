@@ -4,8 +4,12 @@ export default {
   props: {
     weekTexts: {
       type: Array,
-      default: () => ['1', '2', '3', '4', '5', '6', 'Gün']
-    },
+      default: () => ['PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT', 'PZR']
+      },
+      monthNames : {
+          type: Array,
+          default: () => ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+      },
     // 初始日期
     initDate: {
       type: String,
@@ -541,9 +545,9 @@ export default {
                 'div',
                 {
                   class: 'aki-date-month-header',
-                  domProps: { YM: date.toYM() }
+                    domProps: { YM: date.toYM() }
                 },
-                date.toYM()
+                  ((this.monthNames[date.getMonth()]) + " - " + date.getFullYear())
               ),
               h(
                 'div',
